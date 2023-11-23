@@ -1,0 +1,7 @@
+{
+    "workspaces": {
+        "name": "My SecondWorkspace",
+        "type": "personal",
+        "description": "Rest assured created this"
+    }
+}
