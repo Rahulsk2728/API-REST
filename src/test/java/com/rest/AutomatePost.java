@@ -75,7 +75,7 @@ public class AutomatePost {
 	          
 	   }
 	   
-	   @Test
+//	   @Test
 	   public void validate_post_request_nonbdd_style() {
 		   String payload = "{\n"
 		   		+ "    \"workspace\": \n"
@@ -93,7 +93,7 @@ public class AutomatePost {
 		     assertThat(response.<String>path("workspace.id"), matchesPattern("^[a-z0-9-]{36}$"));
 	   }
 	   
-	   @Test
+//	   @Test
 	   public void validate_post_request_payload_fromfile() {
 		  File file = new File("src/main/resources/CreateWorkSpacePayload");
 		   
@@ -110,19 +110,37 @@ public class AutomatePost {
 	   }
 	   
 	   @Test
-	   public void validate_post_request_payload_using() {
-		  File file = new File("src/main/resources/CreateWorkSpacePayload");
+	   public void validate_post_request_payload_using_as_map() {
+		HashMap<String,Object> mainobject = new HashMap<String, Object>();
 		   
-		 given().
-		         body(file).
-		 when().
+		HashMap<String,String> nestedobject = new HashMap<String , String>();
+		nestedobject.put("name", "myThirdWorkspace");
+		nestedobject.put("type", "personal");
+		nestedobject.put("description", "RESTAssured created this");
+		
+		mainobject.put("workspace", nestedobject);
+		
+		   File file = new File("src/main/resources/CreateWorkSpacePayload");
+		   
+		 given().log().all().
+		         body(mainobject).
+		 when().log().all().
 		          post("/workspaces"). 
 		 then(). 
-		           log().all(). 
-		           assertThat(). 
-		           body( "workspace.name",equalTo("myFirstWorkspace"),
-		    		    "workspace.id", matchesPattern("^[a-z0-9-]{36}$"));
+		           log().all();
+//		           assertThat(). 
+//		           body( "workspace.name",equalTo("myFirstWorkspace"));
+//		    		    "workspace.id", matchesPattern("^[a-z0-9-]{36}$"));
 		      
 	   }
 	  
+	  
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
     }

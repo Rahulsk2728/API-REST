@@ -3,11 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.rest.AutomatePut">
+      <class name="google.oauth.GmailAPI">
         <methods>
-          <include name="validate_put_request_bdd_style"/>
+          <include name="getUserProfile"/>
+          <include name="beforeClass"/>
+          <include name="sendMessage"/>
         </methods>
-      </class> <!-- com.rest.AutomatePut -->
+      </class> <!-- google.oauth.GmailAPI -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
